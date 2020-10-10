@@ -1,0 +1,15 @@
+{
+  "commands": [
+    {
+      "name": "Artboards Slideshow",
+      "identifier": "artboards-slideshow",
+      "script": "./artboards-slideshow.js"
+    }
+  ],
+  "menu": {
+    "isRoot": true,
+    "items": [
+      "artboards-slideshow"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "name": "Artboards Slideshow",
+      "identifier": "artboards-slideshow",
+      "script": "__artboards-slideshow.js"
+    }
+  ],
+  "menu": {
+    "isRoot": true,
+    "items": [
+      "artboards-slideshow"
+    ]
+  },
+  "version": "0.1.0",
+  "description": "Present your idea without slides size limit",
+  "name": "Artboards Slideshow",
+  "identifier": "Artboards Slideshow",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com/tankxu/sketch-artboards-slideshow/master/.appcast.xml",
+  "author": "tankxu",
+  "authorEmail": "hellotank@qq.com"
+}

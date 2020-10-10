@@ -1,0 +1,34 @@
+{
+  "name": "artboards-slideshow",
+  "description": "Present your idea without slides size limit",
+  "version": "0.1.0",
+  "engines": {
+    "sketch": ">=3.0"
+  },
+  "skpm": {
+    "name": "Artboards Slideshow",
+    "manifest": "src/manifest.json",
+    "main": "artboards-slideshow.sketchplugin",
+    "assets": [
+      "assets/**/*"
+    ]
+  },
+  "scripts": {
+    "build": "skpm-build",
+    "watch": "skpm-build --watch",
+    "start": "skpm-build --watch --run",
+    "postinstall": "npm run build && skpm-link"
+  },
+  "devDependencies": {
+    "@skpm/builder": "^0.7.7"
+  },
+  "author": "tankxu <hellotank@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tankxu/sketch-artboards-slideshow"
+  },
+  "dependencies": {
+    "@skpm/fs": "^0.2.6",
+    "skpm": "^1.3.1"
+  }
+}
