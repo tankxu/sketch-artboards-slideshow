@@ -20,8 +20,12 @@ export default (
     sketch.export(artboard.object, options);
     let img = {
         bounds: artboard.bounds,
-        path: options.output + "/" + artboard.name + "@" + options.scales + "x." + options.formats
+        path: artboard.name + "." + options.formats
     }
+    if (options.scales > 1) {
+        img.path = artboard.name + "@" + options.scales + "x." + options.formats
+    }
+
     imgFiles.push(img);
   });
   let htmlFile = `${options.output}/index.html`;
@@ -84,7 +88,7 @@ export default (
   </head>
   <body>
       <div class="slideshow">
-          ${imgFiles.map(file => '<section class="page"><img src="'+ file.path + '"width="' + file.bounds.width + 'px" height="'+ file.bounds.height + 'px"></section>').join('\n')}
+          ${imgFiles.map(file => '<section class="page"><img src="'+ file.path + '" width="' + file.bounds.width + 'px" height="'+ file.bounds.height + 'px"></section>').join('\n')}
       </div>
       <div class="alert">
           <p class="reach-end">Reach the end</p>

@@ -813,8 +813,13 @@ options, slideName) {
     sketch.export(artboard.object, options);
     var img = {
       bounds: artboard.bounds,
-      path: options.output + "/" + artboard.name + "@" + options.scales + "x." + options.formats
+      path: artboard.name + "." + options.formats
     };
+
+    if (options.scales > 1) {
+      img.path = artboard.name + "@" + options.scales + "x." + options.formats;
+    }
+
     imgFiles.push(img);
   });
   var htmlFile = "".concat(options.output, "/index.html");
@@ -822,7 +827,7 @@ options, slideName) {
   console.log(imgFiles); // create html
 
   var html = "<!DOCTYPE html>\n  <html>\n  <head>\n      <title>".concat(slideName, " Slides</title>\n      <style type=\"text/css\">\n      body {\n          margin: 0;\n          padding: 0;\n          font-family: -apple-system, BlinkMacSystemFont, sans-serif;\n          font-size: 16px;\n          color: #fff;\n      }\n\n      .slideshow {\n          margin: 0;\n          padding: 0;\n      }\n\n      .page {\n          max-width: 100%;\n          max-height: 100%;\n          overflow: scroll;\n          position: absolute;\n          display: none;\n      }\n\n      .page.show {\n          display: block;\n      }\n\n      .alert {\n          position: absolute;\n          width: 100%;\n          text-align: center;\n      }\n\n      .alert p {\n          width: 200px;\n          height: 48px;\n          line-height: 48px;\n          background: #000000e6;\n          border: solid 1px #ffffff20;\n          margin: auto;\n          margin-top: -50px;\n          display: none;\n      }\n\n      .alert p.show {\n          transform: translateY(49px);\n          display: block;\n      }\n      </style>\n  </head>\n  <body>\n      <div class=\"slideshow\">\n          ").concat(imgFiles.map(function (file) {
-    return '<section class="page"><img src="' + file.path + '"width="' + file.bounds.width + 'px" height="' + file.bounds.height + 'px"></section>';
+    return '<section class="page"><img src="' + file.path + '" width="' + file.bounds.width + 'px" height="' + file.bounds.height + 'px"></section>';
   }).join('\n'), "\n      </div>\n      <div class=\"alert\">\n          <p class=\"reach-end\">Reach the end</p>\n          <p class=\"reach-top\">Reach the top</p>\n      </div>\n      <script>\n      document.addEventListener(\"keydown\", switchSlide);\n      const slides = document.getElementsByClassName(\"page\");\n      const alertEnd = document.getElementsByClassName(\"reach-end\");\n      const alertTop = document.getElementsByClassName(\"reach-top\");\n\n      let pageNum = 0;\n      slides[0].classList.add(\"show\");\n\n      function hideSlide(pageNum) {\n          slides[pageNum].classList.remove(\"show\");\n      }\n\n      function showSlide(pageNum) {\n          slides[pageNum].classList.add(\"show\");\n      }\n\n      function nextSlide() {\n          hideSlide(pageNum);\n          pageNum = pageNum + 1;\n          showSlide(pageNum);\n      }\n\n      function prevSlide() {\n          hideSlide(pageNum);\n          pageNum = pageNum - 1;\n          showSlide(pageNum);\n      }\n\n      function switchSlide(event) {\n          let key = event.keyCode;\n          // console.log(key)\n\n          // Press key Arrow Right, K, Space switch to the next slide\n          if ((key == 39) | (key == 32) | (key == 75)) {\n              console.log(\"Next Slide\");\n              event.preventDefault();\n              if (pageNum < slides.length - 1) {\n                  nextSlide();\n              } else {\n                  console.log(\"Reach End\");\n                  alertTop[0].classList.remove(\"show\");\n                  alertEnd[0].classList.add(\"show\");\n                  setTimeout(function() {\n                      alertEnd[0].classList.remove(\"show\");\n                  }, 2000);\n              }\n          }\n\n          // Press Arrow Left, J switch to the previous slide\n          if ((key == 37) | (key == 74)) {\n              console.log(\"Prev Slide\");\n              event.preventDefault();\n              if (pageNum > 0) {\n                  prevSlide();\n              } else {\n                  console.log(\"Reach Top\");\n                  alertEnd[0].classList.remove(\"show\");\n                  alertTop[0].classList.add(\"show\");\n                  setTimeout(function() {\n                      alertTop[0].classList.remove(\"show\");\n                  }, 2000);\n              }\n          }\n      }\n      </script>\n  </body>\n  </html>"); // create file
 
   fs.writeFileSync(htmlFile, html);
