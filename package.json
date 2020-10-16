@@ -1,7 +1,7 @@
 {
   "name": "artboards-slideshow",
   "description": "Present your idea without slides size limit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "sketch": ">=3.0"
   },
