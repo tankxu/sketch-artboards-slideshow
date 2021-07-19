@@ -24,7 +24,7 @@ This plugin will be useful when you want to present your Web Design, UX Flow, Bu
 
 4. The slide will be generated and saved in the ```~/Downloads``` as a folder, then it will be opened by the default browser.
 
-5. Press key ```Arrow Right```, ```K```, ```Space``` to the next slide, press ```Arrow Left```, ```J``` to the previous slide.
+5. Press key ```Arrow Right```, ```K```, ```Space``` or click the right edge of the window to the next slide, press ```Arrow Left```, ```J``` or click the left edge of the window to the previous slide.
 
 ## Deploy the website
 

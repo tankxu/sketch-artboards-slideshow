@@ -96,6 +96,7 @@ export default (
       </div>
       <script>
       document.addEventListener("keydown", switchSlide);
+      document.addEventListener("click", switchSlide);
       const slides = document.getElementsByClassName("page");
       const alertEnd = document.getElementsByClassName("reach-end");
       const alertTop = document.getElementsByClassName("reach-top");
@@ -125,10 +126,10 @@ export default (
 
       function switchSlide(event) {
           let key = event.keyCode;
-          // console.log(key)
+          let cursorX = event.clientX
 
-          // Press key Arrow Right, K, Space switch to the next slide
-          if ((key == 39) | (key == 32) | (key == 75)) {
+          // Press key Arrow Right, K, Space or click the right edge, switch to the next slide
+          if ((key == 39) | (key == 32) | (key == 75) | (cursorX > window.innerWidth - 200)) {
               console.log("Next Slide");
               event.preventDefault();
               if (pageNum < slides.length - 1) {
@@ -143,8 +144,8 @@ export default (
               }
           }
 
-          // Press Arrow Left, J switch to the previous slide
-          if ((key == 37) | (key == 74)) {
+          // Press Arrow Left, J or click the left edge, switch to the previous slide
+          if ((key == 37) | (key == 74) | (cursorX < 200)) {
               console.log("Prev Slide");
               event.preventDefault();
               if (pageNum > 0) {
