@@ -8,19 +8,28 @@ You can use keyboard to switch the slides, and use mouse to scroll the screen wh
 
 This plugin will be useful when you want to present your Web Design, UX Flow, Business Analysis and so on.
 
-## Installtion
+## Installation
+
 - [Download](https://github.com/tankxu/sketch-artboards-slideshow/releases/latest/download/artboards-slideshow.sketchplugin.zip) the latest release of the plugin
-- Un-zip
+- Unzip
 - Double-click on coding-toolkit.sketchplugin
 
 ## How to use
 
 1. Rename the page's name which the target artboard is in, the page name will be used as the slide's name.
 
-2. Select the artboards you want to present, artboards will be sort by the layer order ( from bottom to top) in the slides, please review the layer order before the next step.
+2. Select the artboards you want to present, artboards will be sort by the layer order (from bottom to top) in the slides, please review the layer order before the next step.
 
 3. Run this ```Artboards Slideshow``` command from the plugin menu of sketch.
 
-4. The slide will be generated and saved in the ```~/Downloads``` as a folder, then it will be opend by the default browser.
+4. The slide will be generated and saved in the ```~/Downloads``` as a folder, then it will be opened by the default browser.
 
 5. Press key ```Arrow Right```, ```K```, ```Space``` to the next slide, press ```Arrow Left```, ```J``` to the previous slide.
+
+## Deploy the website
+
+Suggest using some static web host service to generate a shareable link for your slideshow website.
+
+- [surge.sh](https://surge.sh/)
+- [netlify.app](https://netlify.app/)
+- [vercel.com](https://vercel.com/)
